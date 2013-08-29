@@ -1,0 +1,35 @@
+{
+  "name": "strapless",
+  "version": "1.0.0",
+  "authors": [
+    "Caitlin Potter <snowball@defpixel.com>"
+  ],
+  "description": "Unadulterated Less stylesheet source files for Twitter Bootstrap (The sleek, intuitive,   and powerful front-end framework for faster and easier web development)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/caitp/bower-strapless.git"
+  },
+  "keywords": [
+    "twitter",
+    "bootstrap",
+    "bower",
+    "less",
+    "stylesheet",
+    "theme",
+    "customization",
+    "twbs",
+    "ui",
+    "ux",
+    "mobile",
+    "responsive"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "**/*.js",
+    "package.json"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "bower-strapless",
+  "version": "1.0.0",
+  "description": "Unadulterated Less stylesheet source files for Twitter Bootstrap (The sleek, intuitive, and powerful front-end framework for faster and easier web development)",
+  "scripts": {
+    "build": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/caitp/bower-strapless.git"
+  },
+  "keywords": [
+    "twitter",
+    "bootstrap",
+    "bower",
+    "less",
+    "stylesheet",
+    "theme",
+    "customization",
+    "twbs",
+    "ui",
+    "ux",
+    "mobile",
+    "responsive"
+  ],
+  "author": {
+    "name": "Caitlin Potter",
+    "email": "snowball@defpixel.com",
+    "url": "http://github.com/caitp"
+  },
+  "contributors": [
+    "Twitter Inc."
+  ],
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/caitp/bower-strapless/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-git": "~0.1.4",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "meta-source-repository": "git://github.com/twbs/bootstrap.git"
+}
