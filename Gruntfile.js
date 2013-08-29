@@ -32,7 +32,10 @@ module.exports = function(grunt) {
     },
 
     // Clean the temporary git repository
-    clean: ['.tmp'],
+    clean: {
+      tmp: ['.tmp'],
+      less: ['less/**/*.less']
+    }
   });
 
   // These plugins provide necessary tasks.
@@ -225,9 +228,10 @@ module.exports = function(grunt) {
     'checkoutlatest', // Checkout the latest semver-ish tag (release)
                       // (This will store the text for the latest release
                       // in a global variable, to be reused later)
-    'clean',          // Copy the files into our nice directory
+    'clean:less',     // Clean up old less files in case they've moved
+    'copy:less',      // Copy the files into our nice directory
     'updatever',      // Update version info from repo's package.json/bower.json
-    'clean',          // Delete the git repository
+    'clean:tmp',      // Delete the git repository
     'commit',         // Commit the updated files
     'gittag',         // Tag the current release
     'gitpush'         // Push changes to origin
