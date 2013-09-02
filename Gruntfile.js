@@ -221,6 +221,18 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('gitrmdir', function() {
+    var done = this.async();
+    grunt.util.spawn({
+      cmd: 'git',
+      args: ['rm', '-f', '-r', 'less'],
+      opts: {
+        stdio: ['ignore', grunt.option('verbose') ? process.stdout : 'ignore',
+                grunt.option('verbose') ? process.stderr : 'ignore']
+      }
+    }, done);
+  });
+
   // Default task.
   grunt.registerTask('default', [
     'checkorigin',    // Check most recent release from origin
@@ -228,7 +240,7 @@ module.exports = function(grunt) {
     'checkoutlatest', // Checkout the latest semver-ish tag (release)
                       // (This will store the text for the latest release
                       // in a global variable, to be reused later)
-    'clean:less',     // Clean up old less files in case they've moved
+    'gitrmdir',     // Clean up old less files in case they've moved
     'copy:less',      // Copy the files into our nice directory
     'updatever',      // Update version info from repo's package.json/bower.json
     'clean:tmp',      // Delete the git repository
