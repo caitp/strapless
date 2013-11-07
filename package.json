@@ -1,6 +1,6 @@
 {
   "name": "bower-strapless",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Unadulterated Less stylesheet source files for Twitter Bootstrap (The sleek, intuitive, and powerful front-end framework for faster and easier web development)",
   "scripts": {
     "build": "grunt"
