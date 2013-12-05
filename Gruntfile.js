@@ -167,6 +167,8 @@ module.exports = function(grunt) {
         // Ignore errors
         if(err) {
           console.log(result.stderr);
+          next(err);
+          return done(err);
         }
 
         // Wait so that git has time to delete index.lock (potentially flaky!)
@@ -177,6 +179,10 @@ module.exports = function(grunt) {
     }, added);
 
     function added(err) {
+      if (err) {
+        console.log(err);
+        return done(err);
+      }
       grunt.util.spawn({
         cmd: 'git',
         args: ['commit', '-m', message]
