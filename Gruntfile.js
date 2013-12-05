@@ -166,8 +166,6 @@ module.exports = function(grunt) {
       function finished(err, result, code) {
         // Ignore errors
         if(err) {
-          console.log(result.stderr);
-          next(err);
           return done(err);
         }
 
@@ -180,7 +178,6 @@ module.exports = function(grunt) {
 
     function added(err) {
       if (err) {
-        console.log(err);
         return done(err);
       }
       grunt.util.spawn({
