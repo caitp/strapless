@@ -157,6 +157,7 @@ module.exports = function(grunt) {
       'README.md',
       'Gruntfile.js'
     ]);
+    console.log(files.join(' '));
 
     grunt.util.async.forEach(files, function(file, next) {
       grunt.util.spawn({
@@ -164,8 +165,13 @@ module.exports = function(grunt) {
         args: ['add', file]
       }, finished);
       function finished(err, result, code) {
+        if(err) {
+          console.log(result.stderr);
+        }
         // Ignore errors
-        next(null);
+        setTimeout(function() {
+          next(null);
+        }, 100);
       }
     }, added);
 
@@ -191,12 +197,16 @@ module.exports = function(grunt) {
     
     var tag = 'v' + process.env['STRAPLESS_VERSION'];
     var message = "Synchronized with twbs/bootstrap#" + tag;
-    
+   
     grunt.util.spawn({
       cmd: 'git',
-      args: ['tag', '-a', '-m', message, tag]
-    }, tagged);
-
+      args: ['tag', '--delete', tag],
+    }, function() {
+      grunt.util.spawn({
+        cmd: 'git',
+        args: ['tag', '-a', '-m', message, tag]
+      }, tagged);
+    });
     function tagged(err, result, code) {
       if(err)
         return grunt.fail.fatal(err);
@@ -212,8 +222,13 @@ module.exports = function(grunt) {
     var done = this.async();
     grunt.util.spawn({
       cmd: 'git',
-      args: ['push', 'origin', 'master', 'v' + process.env['STRAPLESS_VERSION']]
-    }, pushed);
+      args: ['push', 'origin', '--delete', 'v' + process.env['STRAPLESS_VERSION']],
+    }, function() {
+      grunt.util.spawn({
+        cmd: 'git',
+        args: ['push', 'origin', 'master', 'v' + process.env['STRAPLESS_VERSION']]
+      }, pushed);
+    });
     function pushed(err, result, code) {
       if(err)
         return grunt.fail.fatal(err);
@@ -240,7 +255,7 @@ module.exports = function(grunt) {
     'checkoutlatest', // Checkout the latest semver-ish tag (release)
                       // (This will store the text for the latest release
                       // in a global variable, to be reused later)
-    'gitrmdir',     // Clean up old less files in case they've moved
+    'gitrmdir',       // Clean up old less files in case they've moved
     'copy:less',      // Copy the files into our nice directory
     'updatever',      // Update version info from repo's package.json/bower.json
     'clean:tmp',      // Delete the git repository
