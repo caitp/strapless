@@ -157,7 +157,6 @@ module.exports = function(grunt) {
       'README.md',
       'Gruntfile.js'
     ]);
-    console.log(files.join(' '));
 
     grunt.util.async.forEach(files, function(file, next) {
       grunt.util.spawn({
@@ -165,10 +164,12 @@ module.exports = function(grunt) {
         args: ['add', file]
       }, finished);
       function finished(err, result, code) {
+        // Ignore errors
         if(err) {
           console.log(result.stderr);
         }
-        // Ignore errors
+
+        // Wait so that git has time to delete index.lock (potentially flaky!)
         setTimeout(function() {
           next(null);
         }, 100);
