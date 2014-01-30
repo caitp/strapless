@@ -172,7 +172,7 @@ module.exports = function(grunt) {
         // Wait so that git has time to delete index.lock (potentially flaky!)
         setTimeout(function() {
           next(null);
-        }, 100);
+        }, 500);
       }
     }, added);
 
