@@ -29,5 +29,5 @@ Jacob Thornton
 - http://github.com/fat
 
 ##Copyright and License (from [twbs/bootstrap](https://github.com/twbs/bootstrap/blob/master/README.md#copyright-and-license))
-Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
+Copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
 
